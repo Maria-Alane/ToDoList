@@ -28,7 +28,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_titulo"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -46,11 +46,10 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_descripition"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
         android:hint="@string/descricao"
         app:layout_constraintBottom_toTopOf="@+id/guide_center"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
@@ -59,14 +58,14 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="100dp"
             android:inputType="textImeMultiLine" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_date"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -87,7 +86,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_hour"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/hora"
@@ -105,7 +104,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        style="@style/Widget.Material3.Button.OutlinedButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/cancelar"
@@ -117,7 +116,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_new_task"
-        style="@style/Animation.Design.BottomSheetDialog"
+        style="@style/Theme.MaterialComponents.BottomSheetDialog"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -132,6 +131,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="479dp" />
+        app:layout_constraintGuide_begin="415dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
