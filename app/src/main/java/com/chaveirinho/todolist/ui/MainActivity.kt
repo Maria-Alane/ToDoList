@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.chaveirinho.todolist.databinding.ActivityMainBinding
+import com.chaveirinho.todolist.datasource.TaskDataSource
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,8 +24,20 @@ class MainActivity : AppCompatActivity() {
     private fun insertListerners() {
         //usando intent para chamar outra activity
         binding.fabAdd.setOnClickListener {
-            startActivity(Intent(this, AddTaskActivity::class.java))
+            startActivityForResult(Intent(this, AddTaskActivity::class.java), CREATE_NEW_TASK)
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CREATE_NEW_TASK) {
+            binding.rvTask.adapter = adapter
+            adapter.submitList(TaskDataSource.getList())
+        }
+    }
+
+    companion object {
+        private const val CREATE_NEW_TASK = 1000
     }
 
 }

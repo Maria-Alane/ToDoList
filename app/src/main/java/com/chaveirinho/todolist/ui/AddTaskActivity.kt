@@ -1,5 +1,6 @@
 package com.chaveirinho.todolist.ui
 
+import android.app.Activity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.chaveirinho.todolist.databinding.ActivityAddTaskBinding
@@ -43,8 +44,8 @@ class AddTaskActivity : AppCompatActivity() {
                 .setTimeFormat(TimeFormat.CLOCK_24H)
                 .build()
             timePicker.addOnPositiveButtonClickListener {
-                val minute = if(timePicker.minute in 0..9) "$0{timePicker.minute}" else timePicker.minute
-                val hour = if(timePicker.hour in 0..9) "$0{timePicker.hour}" else timePicker.hour
+                val minute = if(timePicker.minute in 0..9) "0${timePicker.minute}" else timePicker.minute
+                val hour = if(timePicker.hour in 0..9) "0${timePicker.hour}" else timePicker.hour
 
                 binding.tilHour.text = "$hour:$minute"
             }
@@ -63,6 +64,8 @@ class AddTaskActivity : AppCompatActivity() {
             )
 
             TaskDataSource.insertTask(task)
+
+            setResult(Activity.RESULT_OK)
             finish()
         }
     }
