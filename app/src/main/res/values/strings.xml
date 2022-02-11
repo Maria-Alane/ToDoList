@@ -8,4 +8,6 @@
     <string name="cancelar">Cancelar</string>
     <string name="descricao">Descrição</string>
     <string name="descripition_new_task">Nova Tarefa</string>
+    <string name="label_editar">Editar</string>
+    <string name="label_deletar">Deletar</string>
 </resources>
