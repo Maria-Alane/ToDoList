@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.chaveirinho.todolist.databinding.ActivityMainBinding
 import com.chaveirinho.todolist.datasource.TaskDataSource
 
@@ -45,7 +46,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateList() {
-        adapter.submitList(TaskDataSource.getList())
+        val list = TaskDataSource.getList()
+        //Usando o kotlin da melhor forma para o codigo não ficar repetido
+        binding.includeEmpyte.empyteState.visibility = if (list.isEmpty()) View.VISIBLE
+        else View.GONE
+//        if (list.isEmpty()){
+//            binding.includeEmpyte.empyteState.visibility = View.VISIBLE
+//        }else{
+//            binding.includeEmpyte.empyteState.visibility = View.GONE
+//        }
+        adapter.submitList(list)
     }
 
     companion object {
