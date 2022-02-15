@@ -1,5 +1,5 @@
 # ToDoList
-App de "To do list" é um App de tarefas usando linguagem Kotlin
+App "To do list" é um App de tarefas usando linguagem Kotlin
 
 *Tela Inicial
 
