@@ -8,9 +8,9 @@
 
     <TextView
         android:id="@+id/tv_title_task"
+        style="@style/style_pink_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,9 +19,9 @@
 
     <TextView
         android:id="@+id/tv_date"
+        style="@style/style_pink_bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@id/tv_title_task"
         app:layout_constraintTop_toBottomOf="@id/tv_title_task"

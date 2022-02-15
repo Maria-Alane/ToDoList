@@ -8,17 +8,12 @@
 
     <TextView
         android:id="@+id/tv_message"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:gravity="center"
         android:text="@string/label_you_dont_have_task"
-        android:textColor="@color/pink_100"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/iv_image"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/style_pink_bold" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_image"
@@ -28,6 +23,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_design_empyte_state" />
+        app:srcCompat="@drawable/ic_vi_empyte" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
