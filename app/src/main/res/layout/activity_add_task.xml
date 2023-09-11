@@ -12,30 +12,18 @@
         app:navigationIcon="@drawable/ic_navigate"
         app:title="@string/criar_tarefa" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_begin="32dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_end="32dp" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_titulo"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="@dimen/margin_text_input_layout"
         android:hint="@string/titulo"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
-        app:layout_constraintStart_toStartOf="@id/guide_start"
-        app:layout_constraintTop_toBottomOf="@id/tollbar">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tollbar"
+        android:layout_marginEnd="@dimen/margin_text_input_layout"
+        android:layout_marginStart="@dimen/margin_text_input_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -47,18 +35,19 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/til_descripition"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_text_input_descripition"
+        android:layout_marginTop="@dimen/margin_text_input_layout"
         android:hint="@string/descricao"
-        app:layout_constraintBottom_toTopOf="@+id/guide_center"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
-        app:layout_constraintStart_toStartOf="@id/guide_start"
+        android:layout_marginStart="@dimen/margin_text_input_layout"
+        android:layout_marginEnd="@dimen/margin_text_input_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/til_titulo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="match_parent"
             android:inputType="textImeMultiLine" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -68,12 +57,13 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="@dimen/margin_text_input_layout"
+        android:layout_marginTop="@dimen/margin_text_input_layout"
+        app:layout_constraintTop_toBottomOf="@id/til_descripition"
+        android:layout_marginStart="@dimen/margin_text_input_layout"
         android:hint="@string/data"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/til_hour"
-        app:layout_constraintStart_toStartOf="@id/guide_start"
-        app:layout_constraintTop_toBottomOf="@id/guide_center"
         app:startIconDrawable="@drawable/ic_calendar">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -90,8 +80,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/hora"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
+        android:layout_marginEnd="@dimen/margin_text_input_layout"
         app:layout_constraintStart_toEndOf="@id/til_date"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/til_date"
         app:startIconDrawable="@drawable/ic_baseline_access_time_24">
 
@@ -110,28 +101,25 @@
         android:layout_height="wrap_content"
         android:text="@string/cancelar"
         android:textAllCaps="false"
-        android:textSize="16sp"
+        android:layout_marginEnd="@dimen/margin_text_input_layout"
+        android:layout_marginStart="@dimen/margin_text_input_layout"
+        android:textSize="@dimen/text_size_add_task"
         app:layout_constraintBottom_toTopOf="@id/btn_new_task"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
-        app:layout_constraintStart_toStartOf="@id/guide_start" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_new_task"
         style="@style/Theme.MaterialComponents.BottomSheetDialog"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="@dimen/margin_text_input_layout"
+        android:layout_marginEnd="@dimen/margin_text_input_layout"
+        android:layout_marginStart="@dimen/margin_text_input_layout"
         android:text="@string/criar_tarefa"
         android:textAllCaps="false"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
-        app:layout_constraintStart_toStartOf="@id/guide_start" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guide_center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="415dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
