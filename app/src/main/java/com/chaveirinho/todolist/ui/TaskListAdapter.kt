@@ -1,16 +1,22 @@
 package com.chaveirinho.todolist.ui
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.chaveirinho.todolist.R
 import com.chaveirinho.todolist.databinding.ItemTaskBinding
 import com.chaveirinho.todolist.model.Task
 
-class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(diffCallback()) {
+class TaskListAdapter(
+    private val context: Context,
+    tasks: List<Task> = emptyList(),
+    var quandoClicaNoItem: (task: Task) -> Unit = {},
+) : RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
+
+    private val tasks = tasks.toMutableList()
 
     var listenerEdit: (Task) -> Unit = {}
     var listenerDelete: (Task) -> Unit = {}
@@ -22,11 +28,13 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(diffCa
     }
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val item = tasks[position]
+        holder.bind(item)
     }
 
     inner class TaskViewHolder(private val binding: ItemTaskBinding) :
         RecyclerView.ViewHolder(binding.root) {
+
         fun bind(item: Task) {
             binding.tvTitleTask.text = item.title
             binding.tvDate.text = "${item.date} ${item.hour}"
@@ -35,7 +43,7 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(diffCa
             }
         }
 
-        //Criando PopUp menu no vector assent
+        // Criando PopUp menu no vector assent
         private fun showPopUp(item: Task) {
             val ivMore = binding.ivMore
             val popupMenu = PopupMenu(ivMore.context, ivMore)
@@ -51,13 +59,17 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(diffCa
         }
     }
 
+    override fun getItemCount(): Int = tasks.size
+
+    fun atualiza(tasks: List<Task>) {
+        this.tasks.clear()
+        this.tasks.addAll(tasks)
+        notifyDataSetChanged()
+    }
 }
 
 class diffCallback : DiffUtil.ItemCallback<Task>() {
     override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem == newItem
 
-
     override fun areContentsTheSame(oldItem: Task, newItem: Task) = oldItem.id == newItem.id
-
-
 }

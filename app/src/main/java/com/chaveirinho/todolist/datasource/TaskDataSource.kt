@@ -1,25 +1,23 @@
 package com.chaveirinho.todolist.datasource
 
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 import com.chaveirinho.todolist.model.Task
 
-object TaskDataSource {
-    private val list = arrayListOf<Task>()
+@Dao
+interface TaskDataSource {
+    @Query("SELECT * FROM Task")
+    fun getAll(): List<Task>
 
-    fun getList() = list.toList()
+    @Insert
+    fun salve(vararg task: Task)
 
-    fun insertTask(task: Task) {
-        if (task.id == 0) {
-            list.add(task.copy(id = list.size + 1))
-        } else {
-            list.remove(task)
-            list.add(task)
-        }
-    }
+    @Delete
+    fun delete(task: Task)
 
-    fun findById(taskId: Int) = list.find { it.id == taskId }
-
-    fun deleteTask(task: Task) {
-        list.remove(task)
-    }
-
+    @Update
+    fun altera(task: Task)
 }
