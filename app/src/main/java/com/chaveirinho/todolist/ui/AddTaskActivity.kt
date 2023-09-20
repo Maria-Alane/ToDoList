@@ -23,8 +23,8 @@ class AddTaskActivity : AppCompatActivity() {
         setContentView(binding.root)
         insertListeners()
 
-        intent.getParcelableExtra<Task>(CHAVE_TASK).let { taskCarregada ->
-            idTask = taskCarregada?.id!!
+        intent.getParcelableExtra<Task>(CHAVE_TASK)?.let { taskCarregada ->
+            idTask = taskCarregada.id
             binding.tilTitulo.text = taskCarregada.title
             binding.tilDate.text = taskCarregada.date
             binding.tilHour.text = taskCarregada.hour
@@ -89,7 +89,4 @@ class AddTaskActivity : AppCompatActivity() {
         )
     }
 
-    companion object {
-        const val TASK_ID = "task_id"
-    }
 }

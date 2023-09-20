@@ -1,25 +1,27 @@
 package com.chaveirinho.todolist.ui
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
+import com.chaveirinho.todolist.adapter.TaskListAdapter
 import com.chaveirinho.todolist.databinding.ActivityListTaskBinding
 import com.chaveirinho.todolist.datasource.AppDatabase
-import com.chaveirinho.todolist.datasource.TaskDataSource
 
 class TaskListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityListTaskBinding
-    private val adapter by lazy { TaskListAdapter(this) }
+    private val adapter by lazy { TaskListAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        configRecycler()
+
+        binding.rvTask.adapter = adapter
         configFab()
+        setEmptyState()
     }
 
     override fun onResume() {
@@ -29,16 +31,18 @@ class TaskListActivity : AppCompatActivity() {
         adapter.atualiza(taskDataSource.getAll())
     }
 
-    private fun configRecycler() {
-        val recyclerView = binding.rvTask
-        recyclerView.adapter = adapter
+    fun configFab() {
+       binding.fabAddNewTask.setOnClickListener {
+           val intent =Intent(this, AddTaskActivity::class.java)
+           startActivity(intent)
+       }
     }
 
-    fun configFab() {
-        val fab = binding.fabAdd
-        fab.setOnClickListener {
-            val intent = Intent(this, AddTaskActivity::class.java)
-            startActivity(intent)
+    private fun setEmptyState() {
+        if (adapter.itemCount > 0) {
+            binding.includeEmpyte.empyteState.visibility = VISIBLE
+        } else {
+            binding.includeEmpyte.empyteState.visibility = INVISIBLE
         }
     }
 

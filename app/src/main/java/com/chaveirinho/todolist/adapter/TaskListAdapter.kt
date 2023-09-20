@@ -1,19 +1,15 @@
-package com.chaveirinho.todolist.ui
+package com.chaveirinho.todolist.adapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.chaveirinho.todolist.R
 import com.chaveirinho.todolist.databinding.ItemTaskBinding
 import com.chaveirinho.todolist.model.Task
 
 class TaskListAdapter(
-    private val context: Context,
     tasks: List<Task> = emptyList(),
-    var quandoClicaNoItem: (task: Task) -> Unit = {},
 ) : RecyclerView.Adapter<TaskListAdapter.TaskViewHolder>() {
 
     private val tasks = tasks.toMutableList()
@@ -68,8 +64,8 @@ class TaskListAdapter(
     }
 }
 
-class diffCallback : DiffUtil.ItemCallback<Task>() {
-    override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem == newItem
-
-    override fun areContentsTheSame(oldItem: Task, newItem: Task) = oldItem.id == newItem.id
-}
+//class diffCallback : DiffUtil.ItemCallback<Task>() {
+//    override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem == newItem
+//
+//    override fun areContentsTheSame(oldItem: Task, newItem: Task) = oldItem.id == newItem.id
+//}
